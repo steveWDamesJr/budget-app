@@ -11,8 +11,28 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+     <header class="mb-10 text-sm">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-solid h-14 border-[#cfcfcf] font-bold">
+        <% if user_signed_in? %>
+        <p class="hidden md:block">Welcome, <%= current_user.name %></p>
+        <% else %>
+        <p class="hidden md:block">Welcome</p>
+        <% end %>
+        <nav class="flex items-center gap-16 font-medium">
+          <%= link_to 'Foods', class: 'nav-link' %>
+          <%= link_to 'Recipes', class: 'nav-link' %>
+          <%= link_to 'Shopping List', class: 'nav-link' %>
+          <%= link_to 'Public Recipes', class: 'nav-link' %>
+          <div class="p-2 font-semibold leading-none transition duration-300 ease-in-out rounded outline-none w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent text-light hover:bg-accentH">
+            <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %>
+            <% else %>
+            <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+            <% end %>
+          </div>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
