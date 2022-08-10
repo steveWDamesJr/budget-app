@@ -2,7 +2,7 @@ class Group < ApplicationRecord
   has_many :purchasegroups, dependent: :destroy
   has_many :purchases, through: :purchasegroups, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 3..15 }
   validates :icon, presence: true
 
   def self.total_purchased(group_id)
