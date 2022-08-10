@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :purchases, dependent: :destroy
   has_many :groups, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 3..15 }
   validates :email, presence: true
 end
