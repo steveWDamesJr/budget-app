@@ -1,9 +1,35 @@
 <h1>New group</h1>
+<nav class= ''>
+  <div class=''>
+    <%= link_to '←', user_path(current_user.id), class:'' %>
+    <a class='' href="#">Purchases</a>
+    <%= link_to 'Next',{}, class: ''%>
+ </div>
+</nav>
 
-<%= render "form", group: @group %>
-
-<br>
-
-<div>
-  <%= link_to "Back to groups", groups_path %>
+<div class=''>
+  <code class= ''>Purchase Type</code>
+  <div class='w-70'>
+    <%=form_with model: @group, url: user_groups_path,   scope: :group do |form| %>
+      <%= form.label 'Choose a Purchase Type', class: '' %>
+      <%= form.select :icon, options_for_select([
+      ['Motorcycle', 'https://via.placeholder.com/150.png/09f/fff'],
+      ['Home', ''],
+      ['Travel', ''],
+      ['Tech', 'https://via.placeholder.com/150.png/09f/fff'],
+      ['Hygiene', ''],
+      ['Clothing', ''],
+      ['Training', ''],
+      ['Food', '']
+      ]), {}, class:'form-select', id: 'icon', aria_label: 'purchase'%>
+      <%= form.hidden_field :user_id, value: current_user.id  %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+      </div>
+      <div class=''>
+        <%= form.submit 'Add Purchase Type', class:'' %>
+      </div>
+    <% end %>
+  </div>
 </div>
