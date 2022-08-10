@@ -1,10 +1,56 @@
+<nav class='navbar'>
+  <div class=''>
+      <%= link_to '←', user_path(current_user.id), class:'' %>
+      <a class='' href='#'>Purchases</a>
+      <%= link_to 'Next', {}, class:'' %>
+  </div>
+</nav>
+
 <p style="color: green"><%= notice %></p>
 
-<%= render @group %>
+<div class=''>
+<% @groups.each do |group| %>
+  <% if group.id == params[:id].to_i %>
+    <div class='flex flex-row justify-between w-70'>
+      <div> <%= image_tag group.icon, class:'' %></div>
+      <span><%= group.name %> total purchased: $<%= Group.total_purchased(params[:id]) %></span>
+    <% end %>
+  <% end %>
+</div>
+  <div class=''>
+    <% @purchase_groups.each do |purchase_group| %>
+     <% if purchase_group.group_id == params[:id].to_i %>
+     <% purchases = Purchase.where(id: purchase_group.purchase_id) %>
+     <% purchases.each do |purchase| %>
+      <div class = ''>
+        <div class= 'flex flex-row justify-between'>
+          <div class= ''>
+          <p class= ''><%= purchase.name %></p>
+          <p>Date: <%=((purchase.created_at).to_s)[0,10] %></p>
+          <p> $<%= purchase.amount %></p>
+          </div>
+        </div>
+       <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<div class = ''>
+  <div class= ''>
+    <div class= ''>
+      <%= link_to 'Add new Purchsae', new_user_group_purchase_path(current_user.id, params[:id]), class: ''%>
+    </div>
+  </div>
+ </div>
+</div> 
+    
+          
+
+
+
+
+
+
 
 <div>
-  <%= link_to "Edit this group", edit_group_path(@group) %> |
-  <%= link_to "Back to groups", groups_path %>
-
-  <%= button_to "Destroy this group", @group, method: :delete %>
+  <%= button_to "Destroy this group", user_group_path, method: :delete %>
 </div>
