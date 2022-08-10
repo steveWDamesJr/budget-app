@@ -1,6 +1,6 @@
 class PurchaseGroupsController < ApplicationController
   before_action :set_purchase_group, only: %i[show edit update destroy]
-
+  before_action :authenticate_user!
   # GET /purchase_groups or /purchase_groups.json
   def index
     @purchase_groups = PurchaseGroup.all
@@ -51,6 +51,7 @@ class PurchaseGroupsController < ApplicationController
 
   # DELETE /purchase_groups/1 or /purchase_groups/1.json
   def destroy
+    @group = Group.find(params[:group_id])
     @purchase_group.destroy
 
     respond_to do |format|
