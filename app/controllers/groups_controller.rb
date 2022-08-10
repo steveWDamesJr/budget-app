@@ -1,17 +1,18 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
+  load_and_authorize_resource
+  before_action :authenticate_user!
 
-  # GET /groups or /groups.json
-  def index
-    @groups = Group.all
-  end
-
+  
   # GET /groups/1 or /groups/1.json
-  def show; end
+  def show
+    @groups = Group.where(user_id: current_user.id)
+    @purchase_groups = PurchaseGroup.all.order(created_at: :desc)
+  end
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @groups = Group.all
   end
 
   # GET /groups/1/edit
@@ -19,11 +20,15 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = Group.new(
+      user_id: group_params[:user_id],
+      name: group_params[:name],
+      icon: group_params[:icon]
+    )
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully created.' }
+        format.html { redirect_to user_path(current_user.id), notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,6 +52,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1 or /groups/1.json
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
 
     respond_to do |format|
@@ -64,6 +70,6 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:name, :icon)
+    params.require(:group).permit(:name, :icon, :user_id)
   end
 end
