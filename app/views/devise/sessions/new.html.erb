@@ -1,4 +1,13 @@
+<nav class='navbar'>
+  <div class="container">
+       <%= link_to '←', root_path, class:'text-light text-decoration-none fs-2' %>
+       <a class="navbar-brand" href="#">Login</a>
+       <%= link_to 'Login',{}, class: 'text-light fs-5 text-decoration-none'%>
+  </div>
+</nav>
+
 <h2>Log in</h2>
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
