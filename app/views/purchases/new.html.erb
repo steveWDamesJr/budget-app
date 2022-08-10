@@ -1,9 +1,25 @@
+<nav class='navbar'>
+  <div class=''>
+      <%= link_to '←', user_path(current_user.id), class:'' %>
+      <a class='' href='#'>New Purchase Type</a>
+  </div>
+</nav>
+
 <h1>New purchase</h1>
 
-<%= render "form", purchase: @purchase %>
 
-<br>
-
-<div>
-  <%= link_to "Back to purchases", purchases_path %>
+<div class=''>
+  <div class='w-70'>
+  <%=form_with model: @purchase, url: user_group_purchases_path, scope: :purchase do |form| %>
+  <%= form.label 'Purchase name', class: '' %>
+  <%= form.text_field :name, autofocus: true, autocomplete: 'name', class:'form-control', require: true %>
+  <%= form.label :amount, class: '' %>
+  <%= form.text_field :amount, autofocus: true, autocomplete: 'amount', class:'form-control', require: true %>
 </div>
+
+
+<div class= ''>
+  <%= form.submit 'Add Purchase', class: '' %>
+</div>
+
+<% end %>
