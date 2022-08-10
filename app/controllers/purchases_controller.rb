@@ -3,15 +3,17 @@ class PurchasesController < ApplicationController
 
   # GET /purchases or /purchases.json
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.includes(:user).where(user: current_user)
   end
 
   # GET /purchases/1 or /purchases/1.json
-  def show; end
+  def show
+    @purchase = Purchase.includes(:user).find(params[:id])
+  end
 
   # GET /purchases/new
   def new
-    @purchase = Purchase.new
+    @purchase = Purchase.all
   end
 
   # GET /purchases/1/edit
@@ -19,11 +21,15 @@ class PurchasesController < ApplicationController
 
   # POST /purchases or /purchases.json
   def create
-    @purchase = Purchase.new(purchase_params)
-
+    @purchase = Purchase.new(
+      name: purchase_params[:name],
+      amount: purchase_params[:amount],
+      user_id: current_user.id
+    )
     respond_to do |format|
       if @purchase.save
-        format.html { redirect_to purchase_url(@purchase), notice: 'Purchase was successfully created.' }
+        save_purchase_group(@purchase)
+        format.html { redirect_to user_group_path(current_user.id, params[:group_id]), notice: 'Purchase was successfully created.' }
         format.json { render :show, status: :created, location: @purchase }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -60,6 +66,13 @@ class PurchasesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_purchase
     @purchase = Purchase.find(params[:id])
+  end
+
+  def save_purchase_group(purchase)
+    @purchase_group = PurchaseGroup.create!(
+      purchase_id: purchase.id,
+      group_id: params[:group_id]
+    )
   end
 
   # Only allow a list of trusted parameters through.
