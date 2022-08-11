@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         'proxima-nova-bold': ['"Proxima Nova"','hover', 'focus' ],
         'sans': ['ui-sans-serif', 'system-ui', 'hover', 'focus'],
+        'lobster':['lobster', 'cursive'],
         },
       },
     },

@@ -14,7 +14,7 @@
 <div class= 'flex flex-col items-center justify-center space-y-6' >
   <div class='flex flex-row items-center justify-between block max-w-sm p-6 py-3 space-x-10 bg-white rounded-lg shadow-lg w-75'>
     <div class='font-medium text-text'>
-      <span>Welcome Saver <%= @user.name %></span>
+      <span>Welcome <span class= 'font-medium text-danger'>Saver</span> <%= @user.name %></span>
     </div>
     <div class='h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-auto bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-primary'>
       <%= button_to 'Logoff', destroy_user_session_path,  method: :delete %>
@@ -29,7 +29,7 @@
        <div class= 'flex items-center justify-between h-20 p-2 py-3 my-1 bg-white border-2 rounded-lg shadow-lg border-light w-80'>
           <div class='flex flex-row items-center space-x-14'>
             <%= image_tag group.icon, class: 'h-10 w-10' %>
-            <%= link_to group.name, user_group_path(current_user.id, group.id), class: 'text-2px text-danger' %>
+            <%= link_to group.name, user_group_path(current_user.id, group.id), class: 'text-2px text-second' %>
           </div>
           <div><span class='text-danger'>$</span><%= Group.total_purchased(group.id)%>
           </div>
