@@ -3,7 +3,8 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js','./*.html', './ecommerce/*.html', './assets/**/*.js'
+    './app/javascript/**/*.js','./*.html', './ecommerce/*.html', './assets/**/*.js',
+    './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     extend: {
@@ -18,5 +19,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailgrids/plugin")],
+  plugins: [
+    require("tailgrids/plugin"),
+    require('tw-elements/dist/plugin'),
+  ],
 };
