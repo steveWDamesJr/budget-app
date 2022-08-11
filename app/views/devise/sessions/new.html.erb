@@ -1,23 +1,25 @@
-<nav class='navbar'>
-  <div class="container">
-       <%= link_to '←', root_path, class:'text-light text-decoration-none fs-2' %>
-       <a class="navbar-brand" href="#">Login</a>
-       <%= link_to 'Login',{}, class: 'text-light fs-5 text-decoration-none'%>
+<nav class="relative flex flex-wrap items-center justify-between w-full py-4 shadow-lg bg-main">
+  <div class="flex flex-wrap items-center justify-center w-full px-6 container-fluid">
+    <div class="space-x-14 container-fluid">
+      <a class="mt-2 -mx-5 lg:mt-0" href="#">
+      <%= link_to '←', root_path , class:'text-light text-decoration-none text-xl hover:text-text focus:text-text' %>
+        <span class="font-medium text-light">LOGIN</span>
+        <em class="text-xs font-medium text-light text-decoration-none hover:text-text focus:text-text">'Savings await!'</em>
+      </a>
+    </div>
   </div>
 </nav>
 
-<h2>Log in</h2>
-
-
+<div class= 'flex flex-col items-center justify-center h-screen space-y-6'>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <% f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: "px-4 flex items-center w-72 rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <% f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: "px-4 flex items-center w-72 rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 mb-2" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -27,9 +29,12 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class= 'h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-auto bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-red'>
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class='flex flex-col'>
+  <%= render "devise/shared/links" %>
+</div>
+</div>
