@@ -1,22 +1,29 @@
-<nav class='navbar'>
-  <div class=''>
-      <%= link_to '←', user_path(current_user.id), class:'' %>
-      <a class='' href='#'>Purchases</a>
-      <%= link_to 'Next', {}, class:'' %>
-  </div>
-</nav>
-
 <p style="color: green"><%= notice %></p>
 
-<div class=''>
+<nav class="relative flex flex-wrap items-center justify-between w-full py-4 shadow-lg bg-main">
+  <div class="flex flex-wrap items-center justify-center w-full px-6 container-fluid">
+    <div class="space-x-16 container-fluid">
+      <a class="mt-2 -mx-7 lg:mt-0" href="#">
+      <%= link_to '←', user_path(current_user.id), class:'text-light text-decoration-none text-xl hover:text-text focus:text-text h-2 w-2' %>
+        <span class="font-medium text-light">PURCHASED</span>
+        <span class="font-medium"><%= link_to 'Next',{}, class: 'text-light text-m text-decoration-none hover:text-text focus:text-text'%></span>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class='flex flex-col items-center justify-center'>
 <% @groups.each do |group| %>
   <% if group.id == params[:id].to_i %>
     <div class='flex flex-row justify-between w-70'>
-      <div> <%= image_tag group.icon, class:'' %></div>
-      <span><%= group.name %> total purchased: $<%= Group.total_purchased(params[:id]) %></span>
+      <div><%= image_tag group.icon, class:'h-10 w-10' %></div>
+      <span><code class='text-danger'><%= group.name %></code> total purchased: <code class='text-danger'>$</code><%= Group.total_purchased(params[:id]) %></span>
     <% end %>
   <% end %>
 </div>
+</div>
+
+
+<div class='flex flex-col items-center justify-center space-y-6 h-60'>
   <div class=''>
     <% @purchase_groups.each do |purchase_group| %>
      <% if purchase_group.group_id == params[:id].to_i %>
@@ -42,15 +49,10 @@
   </div>
  </div>
 </div> 
-    
-          
-
-
-
-
-
+</div>
 
 
 <div>
   <%= button_to "Destroy this group", user_group_path, method: :delete %>
+</div>
 </div>

@@ -1,10 +1,13 @@
-<h1>New group</h1>
-<nav class= ''>
-  <div class=''>
-    <%= link_to '←', user_path(current_user.id), class:'' %>
-    <a class='' href="#">Purchases</a>
-    <%= link_to 'Next',{}, class: ''%>
- </div>
+<nav class="relative flex flex-wrap items-center justify-between w-full py-4 shadow-lg bg-main">
+  <div class="flex flex-wrap items-center justify-center w-full px-6 container-fluid">
+    <div class="space-x-9 container-fluid">
+      <a class="mt-2 -mx-7 lg:mt-0" href="#">
+      <%= link_to '←', user_path(current_user.id), class:'text-light text-decoration-none text-xl hover:text-text focus:text-text' %>
+        <span class="font-medium text-light">NEW PURCHASE TYPE</span>
+        <span class="font-medium"><%= link_to 'Next',{}, class: 'text-light text-m text-decoration-none hover:text-text focus:text-text'%></span>
+      </a>
+    </div>
+  </div>
 </nav>
 
 <div class=''>
