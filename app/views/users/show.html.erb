@@ -10,17 +10,20 @@
   </div>
 </nav>
 
-<div class= 'flex flex-col items-center justify-center h-screen space-y-6'>
-<div class=''>
-  <div class=''>
-    <div class=''>
+
+<div class= 'flex flex-col items-center justify-center space-y-6' >
+  <div class='flex flex-row items-center justify-between block max-w-sm p-6 py-3 space-x-10 bg-white rounded-lg shadow-lg w-75'>
+    <div class='font-medium text-text'>
       <span>Welcome Saver <%= @user.name %></span>
-      <div>
-        <%= button_to 'Logoff', destroy_user_session_path,  method: :delete, class: '' %>
-      </div>
+    </div>
+    <div class='h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-auto bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-primary'>
+      <%= button_to 'Logoff', destroy_user_session_path,  method: :delete %>
     </div>
   </div>
-  
+
+</div>
+
+<div class='flex flex-col items-center justify-center h-screen space-y-6'>  
   <div class=''>
     <%= @groups.each do |group| %>
       <div class='justify-between'>
@@ -41,5 +44,4 @@
     </div>
   </div>
 </div>
-
 </div>
