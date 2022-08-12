@@ -28,7 +28,7 @@ Budget Saver is a mobile web application where you can manage your budget: you h
 - [x] Milestone 6: Create the page to add a transaction
 - [x] Milestone 7: Create the transactions page
 - [x] Milestone 8: Record a video for the project
-- [x] Milestone 9: debug rubocob linter errors
+- [x] Milestone 9: debug Rubocob linter errors
 
 
 ## Getting Started
