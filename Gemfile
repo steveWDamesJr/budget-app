@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby '3.0.2'
+ruby '3.0.2'
 
 # Sproket-rails
-gem 'sprockets-rails'
+gem 'sprockets', '~> 3.0'
 
 # Authentication
 gem 'devise'
@@ -19,7 +19,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
