@@ -48,7 +48,7 @@ In your terminal, navigate to your current directory and run this code
 
 `git clone https://github.com/steveWDamesJr/budget-app.git`
 
-Then run
+Then run:
 
 `cd budget-app`
 
