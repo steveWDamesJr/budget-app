@@ -10,6 +10,7 @@ class Group < ApplicationRecord
     purchase_groups = PurchaseGroup.all
     purchase_groups.each do |purchase_group|
       next unless purchase_group.group_id == group_id.to_i
+
       purchases = Purchase.where(id: purchase_group.purchase_id)
       purchases.each do |purchase|
         sum += purchase.amount.to_i
