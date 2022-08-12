@@ -38,8 +38,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Please confirm password', class: "px-4 flex items-center rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 w-72" %>
   </div>
 
-  <div>
-    <%= f.submit "Sign up", class: 'h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-red cursor-auto' %>
+  <div class= 'h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-pointer max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-primary bg-main'>
+    <%= f.submit "Sign up", class: 'cursor-pointer' %>
   </div>
 <% end %>
   <div class='flex flex-col'>
