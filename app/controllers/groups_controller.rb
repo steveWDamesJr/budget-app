@@ -2,7 +2,6 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-  
   # GET /groups/1 or /groups/1.json
   def show
     @groups = Group.where(user_id: current_user.id)
