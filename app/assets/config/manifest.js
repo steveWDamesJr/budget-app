@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript
 //= link_tree ../../../vendor/javascript .js
+//= link application.css
