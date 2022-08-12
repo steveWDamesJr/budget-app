@@ -3,19 +3,25 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js','./*.html', './ecommerce/*.html', './assets/**/*.js'
+    './app/javascript/**/*.js','./*.html', './ecommerce/*.html', './assets/**/*.js',
+    './src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'
   ],
   theme: {
     extend: {
       colors: {
-        light: '#ffffff',
-        accent: '#0d9965',
-        accentH: '#098255',
-        thead: '#f7f8f9',
-        textHeading: '#1f2937',
-        textColor: '#6b7280',
+        main: '#3778c2',
+        second: '#5fb523',
+        text: '#434b54',
+      fontFamily: {
+        'proxima-nova-bold': ['"Proxima Nova"','hover', 'focus' ],
+        'sans': ['ui-sans-serif', 'system-ui', 'hover', 'focus'],
+        'lobster':['lobster', 'cursive'],
+        },
       },
     },
   },
-  plugins: [require("tailgrids/plugin")],
+  plugins: [
+    require("tailgrids/plugin"),
+    require('tw-elements/dist/plugin'),
+  ],
 };
