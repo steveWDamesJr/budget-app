@@ -1,0 +1,48 @@
+<nav class="relative flex flex-wrap items-center justify-between w-full py-4 shadow-lg bg-main">
+  <div class="flex flex-wrap items-center justify-center w-full px-6 container-fluid">
+    <div class="space-x-14 container-fluid">
+      <a class="mt-2 -mx-7 lg:mt-0" href="#">
+      <%= link_to '←', root_path , class:'text-light text-decoration-none text-xl hover:text-text focus:text-text' %>
+        <span class="font-medium text-light">REGISTER</span>
+        <span class="font-medium"><%= link_to 'Next',{}, class: 'text-light text-m text-decoration-none hover:text-text focus:text-text'%></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class= 'flex flex-col items-center justify-center h-screen space-y-6'>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <% f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Full name', class: "px-4 flex items-center w-72 rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10" %>
+  </div>
+
+  <div class="field">
+    <% f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: "px-4 flex items-center rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 w-72"  %>
+  </div>
+
+  <div class="field">
+    <% f.label :password %>
+    <% if @minimum_password_length %>
+    <em class='text-text'>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password', class: "px-4 flex items-center rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 w-72"  %>
+  </div>
+
+  <div class="field">
+    <% f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Please confirm password', class: "px-4 flex items-center rounded appearance-none transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 w-72" %>
+  </div>
+
+  <div>
+    <%= f.submit "Sign up", class: 'h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-red cursor-auto' %>
+  </div>
+<% end %>
+  <div class='flex flex-col'>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

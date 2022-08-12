@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Purchase groups</h1>
+
+<div id="purchase_groups">
+  <% @purchase_groups.each do |purchase_group| %>
+    <%= render purchase_group %>
+    <p>
+      <%= link_to "Show this purchase group", purchase_group %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New purchase group", new_purchase_group_path %>

@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+<p>Choose a purchase</p>
+
+<%= render @purchase_group %>
+
+<div>
+  <%= link_to "Edit this purchase group", edit_purchase_group_path(@purchase_group) %> |
+  <%= link_to "Back to purchase groups", purchase_groups_path %>
+
+  <%= button_to "Destroy this purchase group", @purchase_group, method: :delete %>
+</div>
