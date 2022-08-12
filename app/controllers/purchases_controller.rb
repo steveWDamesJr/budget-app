@@ -30,8 +30,8 @@ class PurchasesController < ApplicationController
       if @purchase.save
         save_purchase_group(@purchase)
         format.html do
- redirect_to user_group_path(current_user.id, params[:group_id]), notice: 'Purchase was successfully created.'
- end
+          redirect_to user_group_path(current_user.id, params[:group_id]), notice: 'Purchase was successfully created.'
+        end
         format.json { render :show, status: :created, location: @purchase }
       else
         format.html { render :new, status: :unprocessable_entity }
