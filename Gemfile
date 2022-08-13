@@ -78,6 +78,9 @@ group :development do
 
   # email confirmation gem
   gem 'letter_opener'
+
+  # Annotations for ex. models using: bundle exec annotate --models
+  gem 'annotate'
 end
 
 group :test do
