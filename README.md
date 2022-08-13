@@ -6,6 +6,12 @@ Budget Saver is a mobile web application where you can manage your budget: you h
 
 ![Budget Saver](https://res.cloudinary.com/webdevjunior/image/upload/v1660392803/Budget%20App/Ruby_on_Rails_App_-_Capstone_ibwsw6.png)
 
+
+###  Documentation Video
+
+[Walkthrough](https://loom.com/share/e507ff144a9341abb5223ce7970cfa8f) 
+
+
 ## Built With
 
 - Ruby
