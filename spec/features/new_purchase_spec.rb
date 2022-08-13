@@ -47,7 +47,6 @@ RSpec.describe 'Test New purchase page', type: :feature do
   end
 end
 
-
 RSpec.describe 'Test New purchase page', type: :feature do
   describe 'GET new purchase page' do
     before(:each) do
@@ -60,15 +59,15 @@ RSpec.describe 'Test New purchase page', type: :feature do
         fill_in 'Name', with: 'Pants'
 
         click_button 'Add Purchase Type'
-        
+
         click_button 'Add Purchase Type'
 
         select 'Tech', from: 'icon'
         fill_in 'Name', with: 'Laptop'
 
         click_button 'Add Purchase Type'
-    end
-    it 'can add assign a new purchase to type' do
+      end
+      it 'can add assign a new purchase to type' do
         click_button 'Pants'
 
         click_button 'Add new purchase'
@@ -86,4 +85,3 @@ RSpec.describe 'Test New purchase page', type: :feature do
     end
   end
 end
-    
