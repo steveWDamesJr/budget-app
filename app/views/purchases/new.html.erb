@@ -10,19 +10,27 @@
   </div>
 </nav>
 
+
 <div class= 'flex flex-col items-center justify-center mt-4 space-y-6'>
   <div class='w-70'>
   <%=form_with model: @purchase, url: user_group_purchases_path, scope: :purchase do |form| %>
   <%= form.label :name, 'Purchase name', class: 'text-text font-medium' %>
   <%= form.text_field :name, class:'px-4 flex items-center w-72 rounded  transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 my-4', require: true, autofocus: true %>
   <%= form.label :amount, class: 'text-text font-medium' %>
-  <%= form.text_field :amount, class:'px-4 flex items-center w-72 rounded  transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 my-4', require: true, autofocus: true%>
-</div>
+  <%= form.text_field :amount, class:'px-4 flex items-center w-72 rounded  transition duration-300 ease-in-out text-heading text-base focus:outline-none focus:ring-0 border border-border-base focus:border-accent h-10 my-4', require: true, autofocus: true %>
 
 
-<div class= 'h-12 p-4 my-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-pointer -ml-36 bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-primary'>
-  <%= form.submit 'Add Purchase', class: 'cursor-pointer' %>
-</div>
+  <div class="dropdown-toggle
+         px-2 w-72 flex space-x-1 py-1.5 bg-second text-text font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out items-center whitespace-nowrap">
+        <%= form.label :purchase, 'Assign to Purchase Type', class: 'text-white' %><br />
+        <%= form.collection_select :group_id, Group.where(user_id: current_user.id).order(:name), :id, :name %>
+  </div>
+  <br />
 
-<% end %>
+
+  <div class= 'h-12 p-4 font-semibold leading-none text-white transition duration-300 ease-in-out border border-transparent rounded outline-none cursor-pointer bg-main max-w-fit focus:outline-none focus:shadow focus:ring-1 focus:ring-accent-700 bg-accent hover:bg-primary'>
+    <%= form.submit 'Add Purchase', class: 'cursor-pointer' %>
+  </div>
+
+    <% end %>
 </div>

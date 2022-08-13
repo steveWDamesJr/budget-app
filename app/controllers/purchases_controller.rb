@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
 
   # GET /purchases/new
   def new
-    @purchase = Purchase.all
+    @purchase = Purchase.new
   end
 
   # GET /purchases/1/edit
@@ -26,11 +26,13 @@ class PurchasesController < ApplicationController
       amount: purchase_params[:amount],
       user_id: current_user.id
     )
+
     respond_to do |format|
       if @purchase.save
         save_purchase_group(@purchase)
         format.html do
-          redirect_to user_group_path(current_user.id, params[:group_id]), notice: 'Purchase was successfully created.'
+          redirect_to user_group_path(current_user.id, purchase_params[:group_id]),
+                      notice: 'Purchase was successfully created.'
         end
 
         format.json { render :show, status: :created, location: @purchase }
@@ -74,12 +76,12 @@ class PurchasesController < ApplicationController
   def save_purchase_group(purchase)
     @purchase_group = PurchaseGroup.create!(
       purchase_id: purchase.id,
-      group_id: params[:group_id]
+      group_id: purchase_params[:group_id]
     )
   end
 
   # Only allow a list of trusted parameters through.
   def purchase_params
-    params.require(:purchase).permit(:name, :amount)
+    params.require(:purchase).permit(:name, :amount, :group_id)
   end
 end
