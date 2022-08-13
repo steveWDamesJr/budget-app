@@ -4,6 +4,7 @@
 
 Budget Saver is a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
+![Budget Saver](https://res.cloudinary.com/webdevjunior/image/upload/v1660392803/Budget%20App/Ruby_on_Rails_App_-_Capstone_ibwsw6.png)
 
 ## Built With
 
